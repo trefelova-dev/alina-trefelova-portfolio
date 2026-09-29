@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/interactive-stepper",
+  "version": "1.0.0",
+  "title": "Interactive Stepper (Флоу шагов процесса)",
+  "category": "design",
+  "icon": "randomize",
+  "description": "Зигзагообразный флоу процесса разработки с опциональным текстом и стрелками",
+  "attributes": {
+    "steps": {
+      "type": "array",
+      "default": [
+        {
+          "tag": "01_concept",
+          "text": "Сначала мы начали с того, что набросали схему",
+          "imgUrl": ""
+        },
+        {
+          "tag": "02_architecture",
+          "text": "Потом я разработала главный экран и меню",
+          "imgUrl": ""
+        },
+        {
+          "tag": "03_release",
+          "text": "В итоге всё было сделано, а продукт выпущен",
+          "imgUrl": ""
+        }
+      ]
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

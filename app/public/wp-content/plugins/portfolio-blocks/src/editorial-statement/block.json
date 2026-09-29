@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/editorial-statement",
+  "version": "1.0.0",
+  "title": "Editorial / Big Statement (Текстовый акцент)",
+  "category": "text",
+  "icon": "format-quote",
+  "description": "Крупный акцентный текст, цитата или манифест проекта",
+  "attributes": {
+    "statement": {
+      "type": "string",
+      "default": "Сложность архитектуры должна оставаться под капотом. Пользователь заслуживает мгновенного отклика."
+    },
+    "author": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": "light"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/annotated-mockup",
+  "version": "1.0.0",
+  "title": "Annotated Mockup (Скетч-картинки с заметками)",
+  "category": "design",
+  "icon": "format-image",
+  "description": "Парные макеты внахлест с рукописными стрелками и подписями .note",
+  "attributes": {
+    "imgPrimary": {
+      "type": "string",
+      "default": ""
+    },
+    "imgSecondary": {
+      "type": "string",
+      "default": ""
+    },
+    "noteTop": {
+      "type": "string",
+      "default": "Transforming raw data..."
+    },
+    "noteBottom": {
+      "type": "string",
+      "default": "Optimising re-renders!"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

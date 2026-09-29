@@ -1,0 +1,86 @@
+.flowchart-diagram-block {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.diagram-canvas {
+  position: relative;
+  width: 100%;
+  border-radius: var(--border-radius-card, 1.25rem);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+.diagram-canvas.mode-card {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.diagram-canvas.mode-transparent {
+  background: transparent;
+  padding: 0.5rem 0 1rem 0;
+}
+
+.diagram-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  gap: 0.5rem 1rem;
+}
+
+.diagram-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  color: var(--text-professional-color, #141414);
+  white-space: nowrap;
+}
+
+.diagram-scroll-area {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+
+.diagram-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain;
+  cursor: zoom-in;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 48rem) {
+  .diagram-header {
+    justify-content: flex-start;
+  }
+
+  .flowchart-diagram-block {
+    margin-inline: -1.25rem;
+    width: calc(100% + 2.5rem);
+    max-width: calc(100% + 2.5rem);
+    padding-inline: 1.25rem;
+  }
+
+  .diagram-scroll-area {
+    justify-content: flex-start;
+  }
+
+  .diagram-img {
+    max-width: none;
+    min-width: 520px;
+  }
+}

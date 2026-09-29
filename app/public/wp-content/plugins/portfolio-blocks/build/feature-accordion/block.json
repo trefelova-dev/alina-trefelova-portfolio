@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/feature-accordion",
+  "version": "1.0.0",
+  "title": "Feature Accordion (Интерактивные фичи)",
+  "category": "design",
+  "icon": "list-view",
+  "description": "Список фич с аккордеоном и динамической сменой превью",
+  "attributes": {
+    "features": {
+      "type": "array",
+      "default": [
+        {
+          "tag": "01_routing",
+          "title": "Оптимизация навигации",
+          "description": "Мгновенные переходы между страницами с предварительной загрузкой ассетов в фоне.",
+          "imgUrl": ""
+        },
+        {
+          "tag": "02_cache",
+          "title": "Умное кэширование",
+          "description": "Снижение нагрузки на сервер на 65% за счет гибридной инвалидации кэша.",
+          "imgUrl": ""
+        },
+        {
+          "tag": "03_touch",
+          "title": "Нативные жесты",
+          "description": "Плавная поддержка мобильных свайпов без задержек ввода.",
+          "imgUrl": ""
+        }
+      ]
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

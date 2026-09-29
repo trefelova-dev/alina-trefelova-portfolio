@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/code-snippet",
+  "version": "1.0.0",
+  "title": "Code Snippet (Терминал с кодом)",
+  "category": "formatting",
+  "icon": "editor-code",
+  "description": "Инженерный блок кода с нумерацией строк, выбором языка и кнопкой копирования",
+  "attributes": {
+    "code": {
+      "type": "string",
+      "default": "const optimizePerformance = async (data) => {\n  // Memoized pipeline\n  const memo = new Map();\n  return data.map(item => memo.get(item.id) ?? item);\n};"
+    },
+    "language": {
+      "type": "string",
+      "default": "typescript"
+    },
+    "fileName": {
+      "type": "string",
+      "default": "useOptimization.ts"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

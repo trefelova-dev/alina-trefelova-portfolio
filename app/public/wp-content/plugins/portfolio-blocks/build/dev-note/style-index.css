@@ -1,0 +1,48 @@
+.dev-note-wrapper[class*="has-"]::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.dev-note-wrapper.has-arrow-up::after {
+  width: 2.5rem;
+  height: 3.1rem;
+  margin-left: 0.75rem;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width=%2749%27 height=%2761%27 viewBox=%270 0 49 61%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M47.2407 1.00002C46.2407 20.5 38.7407 46 2.74072 58C2.74072 58 8.74072 48 11.2407 43C11.4643 42.5528 1.74072 58.5 1.74072 58.5L20.2407 59.2086%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width=%2749%27 height=%2761%27 viewBox=%270 0 49 61%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M47.2407 1.00002C46.2407 20.5 38.7407 46 2.74072 58C2.74072 58 8.74072 48 11.2407 43C11.4643 42.5528 1.74072 58.5 1.74072 58.5L20.2407 59.2086%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E");
+  transform: scale(0.8) scaleY(-1) rotate(-100deg) translateX(-0.6rem);
+  transform-origin: center center;
+}
+
+.dev-note-wrapper.has-arrow-down::after {
+  width: 2.5rem;
+  height: 3.1rem;
+  margin-left: 0.75rem;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width=%2749%27 height=%2761%27 viewBox=%270 0 49 61%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M47.2407 1.00002C46.2407 20.5 38.7407 46 2.74072 58C2.74072 58 8.74072 48 11.2407 43C11.4643 42.5528 1.74072 58.5 1.74072 58.5L20.2407 59.2086%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width=%2749%27 height=%2761%27 viewBox=%270 0 49 61%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M47.2407 1.00002C46.2407 20.5 38.7407 46 2.74072 58C2.74072 58 8.74072 48 11.2407 43C11.4643 42.5528 1.74072 58.5 1.74072 58.5L20.2407 59.2086%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E");
+  transform: scale(0.8) rotate(-100deg) translateX(-1rem);
+  transform-origin: center center;
+}
+.dev-note-wrapper.has-heart::after {
+  width: 1.25rem;
+  height: 1.6rem;
+  margin-left: 0.5rem;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width=%2715%27 height=%2720%27 viewBox=%270 0 15 20%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M2.57647 18.292C7.44219 15.0597 17.5255 6.41892 13.3245 3.38909C10.6946 1.49235 6.77057 7.08067 6.2203 8.45771C6.2203 8.45771 6.23862 -1.20924 1.92248 0.766422C-1.451 2.3106 1.82627 12.6295 5.01107 19.2639%27 stroke=%27black%27 stroke-linecap=%27round%27/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width=%2715%27 height=%2720%27 viewBox=%270 0 15 20%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M2.57647 18.292C7.44219 15.0597 17.5255 6.41892 13.3245 3.38909C10.6946 1.49235 6.77057 7.08067 6.2203 8.45771C6.2203 8.45771 6.23862 -1.20924 1.92248 0.766422C-1.451 2.3106 1.82627 12.6295 5.01107 19.2639%27 stroke=%27black%27 stroke-linecap=%27round%27/%3E%3C/svg%3E");
+  transform: translateY(0.5rem);
+}
+
+.dev-note-wrapper.has-star::after {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: 0.6rem;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M17.7118 59.6211L28.2118 1.62109C35.7118 17.4544 51.0118 49.9211 52.2118 53.1211C53.7118 57.1211 41.7118 40.1211 1.21184 28.1211C-5.28816 29.6211 34.2118 18.6211 59.2118 15.1211C63.2119 15.1211 21.7118 50.1211 17.7118 59.6211Z%27 stroke=%27black%27/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M17.7118 59.6211L28.2118 1.62109C35.7118 17.4544 51.0118 49.9211 52.2118 53.1211C53.7118 57.1211 41.7118 40.1211 1.21184 28.1211C-5.28816 29.6211 34.2118 18.6211 59.2118 15.1211C63.2119 15.1211 21.7118 50.1211 17.7118 59.6211Z%27 stroke=%27black%27/%3E%3C/svg%3E");
+}

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .geek-badge {
+    @apply font-mono text-xs px-2 py-0.5 rounded-tag bg-surfaceDark text-[#e3e3e3] cursor-default transition-all duration-200 hover:invert select-none inline-block;
+  }
+}

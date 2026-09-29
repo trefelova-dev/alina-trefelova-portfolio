@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/project-gallery",
+  "version": "1.0.0",
+  "title": "Project Gallery (Галерея и слайдер)",
+  "category": "media",
+  "icon": "format-gallery",
+  "description": "Галерея кейса: Pinterest-сетка, одиночный слайдер или комбо (десктоп + мобайл)",
+  "attributes": {
+    "layout": {
+      "type": "string",
+      "default": "slider-paired"
+    },
+    "items": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

@@ -1,0 +1,689 @@
+/**
+ * Alina Trefelova Portfolio Theme
+ *
+ * © 2026 Alina Trefelova. All rights reserved.
+ * Author: Alina Trefelova / ATcode
+ *
+ * Стили для страницы контактов (Contacts Page).
+ */
+@use 'mixins' as *;
+
+.contacts-hero-container {
+	.contacts-note {
+		position: relative;
+
+		span.note {
+			display: inline-block;
+			z-index: 2;
+
+			color: var(--bg-professional-color);
+			font-size: 2rem;
+			line-height: 2.25rem;
+
+			--rotate: 5.3deg;
+			white-space: nowrap;
+			opacity: 0;
+			animation: textFadeIn 0.4s ease forwards 2.5s;
+		}
+
+		.contacts-arrow {
+			position: absolute;
+			top: -100%;
+			right: 60%;
+			z-index: 1;
+
+			display: block;
+			width: 66.5rem;
+			height: 10rem;
+
+			pointer-events: none;
+
+			path {
+				stroke: var(--bg-professional-color);
+				opacity: 0.4;
+				stroke-dasharray: 1800;
+				stroke-dashoffset: 1800;
+
+				animation: drawStroke 1.8s ease forwards 1.2s;
+			}
+		}
+	}
+}
+
+.page-contacts-container {
+	display: grid;
+	grid-template-columns: minmax(27.5rem, 1fr) 2.3fr;
+	gap: 3rem;
+	align-items: start;
+
+	width: 100%;
+	max-width: var(--container-width);
+	margin-inline: auto;
+	margin-block-end: var(--space-between-section-desktop);
+	padding-inline: 2rem;
+	box-sizing: border-box;
+
+	section {
+		margin-block-end: 0;
+	}
+
+	.contacts-list-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 2rem;
+
+		height: 100%;
+
+		.contacts-items-wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: start;
+			align-items: start;
+			gap: 1rem;
+
+			:first-child {
+				position: relative;
+			}
+
+			.contacts-list-item {
+				position: relative;
+
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				gap: 0.75rem;
+
+				padding: 0.625rem 0.875rem;
+
+				opacity: 0;
+
+				.contacts-icon {
+					width: 2.25rem;
+					height: auto;
+				}
+
+				.contacts-content {
+					position: relative;
+					z-index: 2;
+
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: start;
+					gap: 0.25rem;
+
+					.contacts-title {
+						color: var(--light-professional-color);
+						font-size: 0.875rem;
+						line-height: 1rem;
+					}
+
+					.contacts-link {
+						color: var(--text-professional-color);
+						font-size: 1rem;
+						line-height: 1.25rem;
+						text-decoration: none;
+
+						&:hover {
+							color: var(--accent-professional-color);
+						}
+					}
+				}
+
+				.contacts-tg-note {
+					position: absolute;
+					left: -8%;
+					z-index: 1;
+
+					display: flex;
+					flex-direction: row;
+					align-items: flex-start;
+					gap: 1rem;
+
+					pointer-events: none;
+
+					.tg-outline {
+						width: 12.5rem;
+						height: auto;
+
+						path {
+							stroke-dasharray: 900;
+							stroke-dashoffset: 900;
+						}
+					}
+
+					.tg-arrow {
+						transform: scaleY(-1) rotate(80deg);
+
+						path {
+							stroke-dasharray: 70;
+							stroke-dashoffset: 70;
+						}
+					}
+
+					span.note {
+						position: absolute;
+						top: -50%;
+						right: -80%;
+
+						color: var(--accent-professional-color);
+						white-space: nowrap;
+
+						transform: rotate(2.57deg);
+						opacity: 0;
+					}
+				}
+			}
+
+			&.is-animated {
+				.contacts-list-item {
+					animation: cardPopIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+					@for $i from 1 through 4 {
+						&:nth-child(#{$i}) {
+							animation-delay: #{$i * 0.12}s;
+						}
+					}
+
+					.contacts-tg-note {
+						.tg-outline path {
+							animation: drawStroke 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.6s;
+						}
+
+						.tg-arrow path {
+							animation: drawStroke 0.5s ease forwards 1.3s;
+						}
+
+						span.note {
+							animation: cardPopIn 0.4s ease forwards 1.7s;
+						}
+					}
+				}
+			}
+		}
+
+		.contacts-ad-card {
+			@include svg-background("ad-border-fill.svg", -8px, 64.5rem);
+
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 1rem;
+
+			width: 100%;
+			padding: 1.25rem 1.5rem;
+			box-sizing: border-box;
+
+			opacity: 0;
+
+			.ad-line-numbers {
+				position: relative;
+
+				display: flex;
+				flex-direction: column;
+
+				padding-right: 0.75rem;
+
+				opacity: 0.5;
+				user-select: none;
+
+				span {
+					color: var(--bg-professional-color);
+					font-family: 'JetBrains Mono', monospace;
+					font-size: 0.875rem;
+					line-height: 1.25rem;
+                    height: 1.25rem;
+					text-align: right;
+				}
+
+				&::after {
+					position: absolute;
+					top: 0;
+					right: 0;
+
+					width: 0.125rem;
+					height: 100%;
+
+					background-color: var(--bg-professional-color);
+					content: "";
+
+					opacity: 0.4;
+				}
+			}
+
+			.ad-content {
+				display: flex;
+				flex-direction: column;
+
+				.ad-line {
+					color: var(--bg-professional-color);
+					font-family: 'JetBrains Mono', monospace;
+					font-size: 0.875rem;
+					line-height: 1.25rem;
+					height: 1.25rem;
+					white-space: nowrap;
+
+					a.ad-link {
+						color: var(--bg-professional-color);
+						text-decoration: none;
+						transition: opacity 0.2s ease;
+
+						&:hover {
+							opacity: 0.8;
+						}
+					}
+				}
+			}
+
+			&.is-animated {
+				animation: cardPopIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+			}
+		}
+	}
+
+    .contacts-form {
+        .form-editor-ui {
+            @include svg-background("form-border-fill.svg", 0, 64.5rem);
+            padding: clamp(2rem, 4vw, 3rem);
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            box-sizing: border-box;
+            height: auto;
+            opacity: 0;
+
+            .line-numbers {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                padding-right: 1.25rem;
+                opacity: 0.5;
+                user-select: none;
+
+                .line-num-item {
+                    font-family: 'JetBrains Mono', monospace;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: var(--bg-professional-color);
+                    text-align: right;
+
+                    opacity: 1;
+                    transform: translateX(0);
+                    transition: opacity 0.5s ease, transform 0.5s ease;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 2px;
+                    height: 100%;
+                    background-color: var(--bg-professional-color);
+                    opacity: 0.4;
+                    transition: height 0.2s ease;
+                }
+            }
+
+            .form-content {
+                flex-grow: 1;
+
+                #contact-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 28px;
+
+                    .form-group {
+                        display: grid;
+                        grid-template-columns: 100px 1fr; 
+                        align-items: center;
+                        gap: 1rem;
+
+                        &:has(textarea) {
+                            align-items: start;
+                        }
+
+                        label {
+                            font-family: 'JetBrains Mono', monospace;
+                            font-size: 16px;
+                            line-height: 20px;
+                            color: var(--bg-professional-color);
+                        }
+
+                        input,
+                        textarea {
+                            width: 100%;
+                            font-family: 'JetBrains Mono', monospace;
+                            font-size: 16px;
+                            line-height: 20px;
+                            letter-spacing: 0.02em;
+                            color: var(--bg-professional-color);
+
+                            background: transparent;
+                            border: 1px solid #E3E3E3;
+                            border-radius: 8px;
+                            padding: 8px 16px; 
+                            box-sizing: border-box;
+                            outline: none;
+                            transition: border-color 0.2s ease;
+
+                            &::placeholder {
+                                color: var(--bg-professional-color);
+                                opacity: 0.5;
+                            }
+                        }
+
+                        textarea {
+                            min-height: 160px;
+                            max-height: 420px;
+                            resize: vertical; 
+                        }
+                    }
+
+                    .form-submit {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-top: 8px;
+
+                        .contact-submit {
+                            font-family: 'JetBrains Mono', monospace;
+                            font-size: 16px;
+                            line-height: 20px;
+                            color: var(--bg-professional-color);
+                            background-color: var(--second-professional-color);
+
+                            border: none;
+                            border-radius: 8px;
+                            padding: 8px 16px;
+                            cursor: pointer;
+                            transition: opacity 0.2s ease, transform 0.1s ease;
+
+                            &:hover:not(:disabled) {
+                                opacity: 0.9;
+                            }
+
+                            &:active:not(:disabled) {
+                                transform: translateY(1px);
+                            }
+
+                            .btn-text {
+                                display: inline-block;
+                            }
+
+                            .btn-loader-text {
+                                display: none;
+                            }
+
+                            &.loading {
+                                opacity: 0.7;
+                                cursor: not-allowed;
+
+                                .btn-text {
+                                    display: none;
+                                }
+
+                                .btn-loader-text {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+
+                    #form-response {
+                        font-family: 'JetBrains Mono', monospace;
+                        font-size: 14px;
+                        line-height: 1.4;
+                        text-align: right;
+                        margin-top: 12px;
+
+                        &:empty {
+                            display: none;
+                        }
+
+                        &.is-success {
+                            color: var(--bg-professional-color); 
+                        }
+
+                        &.is-error {
+                            color: var(--second-professional-color); 
+                        }
+                    }
+                }
+            }
+        }
+
+        &.is-animated {
+            .form-editor-ui {
+                animation: cardPopIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// --- АДАПТИВ ---
+
+@media (max-width: 64.5rem) {
+    .contacts-hero-container {
+        .contacts-note {
+            margin-left: 0;
+            margin-block-end: 7rem;
+            align-self: flex-end;
+
+            .contacts-arrow {
+                transform: scale(0.95);
+            }
+
+            span.note {
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+
+    .page-contacts-container {
+        grid-template-columns: 1fr;
+        gap: 4.5rem;
+        width: 100%;
+        padding-inline: 0; // Убираем боковые отступы, чтобы черные блоки касались краев экрана
+
+        /* 1. Растворяем обертку списка, чтобы контакты и реклама разделись */
+        .contacts-list-section {
+            display: contents; 
+
+            .contacts-items-wrapper {
+                order: 1; // 1. Список контактов САМЫЙ ПЕРВЫЙ
+                padding-inline: 2rem; // Возвращаем внутренние отступы для текста контактов
+
+                .contacts-list-item {
+                    .contacts-tg-note {
+                        span.note {
+                            right: -70%; 
+                        }
+                    }
+                }
+            }
+
+            .contacts-ad-card {
+                order: 3; 
+                width: 100%;
+                border-radius: 0;
+
+                &::before {
+                    top: -0.5rem;
+                    bottom: -0.5rem;
+                    left: 50%;
+                    right: auto;
+                    width: calc(100% + 6.25rem);
+                    transform: translateX(-50%);
+                }
+            }
+        }
+
+        /* 2. Форма идет ровно ПОСРЕДИНЕ */
+        .contacts-form {
+            order: 2; // 2. Форма ПОСЕРЕДИНЕ
+
+            .form-editor-ui {
+                width: 100%;
+                margin-inline: 0;
+                padding: 2rem;
+                border-radius: 0;
+
+                .form-content {
+                    #contact-form {
+                        gap: 24px; /* Отступ 24px между инпутами */
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 41.5rem) {
+    .contacts-hero-container {
+        .contacts-note {
+            margin-block-end: 8rem;
+        }
+    }
+}
+
+
+@media (max-width: 35.25rem) {
+    .contacts-hero-container {
+        .contacts-note {
+            .contacts-arrow {
+                right: 0;
+                transform: scale(0.7);
+            }
+        }
+    }
+
+    .page-contacts-container {
+        padding-inline: 0px;
+
+        .contacts-list-section {
+            .contacts-items-wrapper {
+                padding-inline: 1rem;
+
+                .contacts-list-item {
+                    .contacts-icon {
+                        width: 24px;
+                    }
+
+                    .contacts-tg-note {
+                        gap: 8px;
+
+                        span.note {
+                            right: -60%; 
+                        }
+                    }
+                }
+            }
+        }
+
+        .contacts-form {
+            .form-editor-ui {
+                .form-content {
+                    #contact-form {
+                        .form-group {
+                            grid-template-columns: 1fr;
+                            /* Выравниваем все по левому краю */
+                            align-items: stretch;
+                            /* Отступ между лейблом и инпутом */
+                            gap: 0.5rem; 
+
+                            label {
+                                /* Чтобы лейбл не прыгал и занимал всю ширину */
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 24.25rem) {
+    .contacts-hero-container {
+        .contacts-note {
+            .contacts-arrow {
+                right: -50%;
+                transform: scale(0.6);
+            }
+        }
+    }
+
+    .page-contacts-container {
+        .contacts-list-section {
+            .contacts-items-wrapper {
+                .contacts-list-item {
+                    .contacts-tg-note {
+                        span.note {
+                            right: -30%; 
+                        }
+                    }
+                }
+            }
+
+            .contacts-ad-card {
+                .ad-line-numbers {
+                    display: none;
+                }
+            }
+        }
+
+        .contacts-form {
+            .form-editor-ui {
+                .line-numbers {
+                    display: none;
+                }
+            }
+        }
+    }
+}

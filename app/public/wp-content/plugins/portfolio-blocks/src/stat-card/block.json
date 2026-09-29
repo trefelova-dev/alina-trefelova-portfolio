@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/stat-card",
+  "version": "1.0.0",
+  "title": "Stat / Key Takeaway (Ключевая метрика)",
+  "category": "widgets",
+  "icon": "chart-bar",
+  "description": "Карточка метрики или хайлайта в инженерном стиле",
+  "attributes": {
+    "badge": {
+      "type": "string",
+      "default": "metric: performance"
+    },
+    "value": {
+      "type": "string",
+      "default": "45%"
+    },
+    "description": {
+      "type": "string",
+      "default": "Оптимизация рендеринга и нормализация входящих данных на клиенте."
+    },
+    "theme": {
+      "type": "string",
+      "default": "light"
+    },
+    "layout": {
+      "type": "string",
+      "default": "inline"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

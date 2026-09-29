@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/before-after",
+  "version": "1.0.0",
+  "title": "Before / After (Сравнение До/После)",
+  "category": "media",
+  "icon": "image-flip-horizontal",
+  "description": "Интерактивное сравнение экранов редизайна или рефакторинга со слайдером",
+  "attributes": {
+    "beforeUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "beforeAlt": {
+      "type": "string",
+      "default": "Before screen"
+    },
+    "afterUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "afterAlt": {
+      "type": "string",
+      "default": "After screen"
+    },
+    "beforeLabel": {
+      "type": "string",
+      "default": "before"
+    },
+    "afterLabel": {
+      "type": "string",
+      "default": "after"
+    },
+    "caption": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

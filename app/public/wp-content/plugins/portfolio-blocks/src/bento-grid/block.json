@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/bento-grid",
+  "version": "1.0.0",
+  "title": "Bento Grid (Сетка деталей UI)",
+  "category": "design",
+  "icon": "grid-view",
+  "description": "Асимметричная Bento-сетка для демонстрации фич, токенов и деталей UI",
+  "attributes": {
+    "cards": {
+      "type": "array",
+      "default": [
+        { "badge": "01_feature", "title": "Оптимизация рендера", "text": "Устранение лишних перерисовок DOM на 120 FPS.", "imgUrl": "" },
+        { "badge": "02_mobile", "title": "Adaptive Touch", "text": "Полноэкранные свайпы и жесты для мобильных пользователей.", "imgUrl": "" },
+        { "badge": "03_tokens", "title": "Zero Layout Shift", "text": "Стабильные контейнеры без дерганий контента.", "imgUrl": "" },
+        { "badge": "04_security", "title": "Type Safety", "text": "100% покрытие строгой типизацией TypeScript.", "imgUrl": "" }
+      ]
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}

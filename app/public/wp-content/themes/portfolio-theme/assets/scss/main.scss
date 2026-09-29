@@ -1,0 +1,178 @@
+/**
+ * Alina Trefelova Portfolio
+ * © 2026 Alina Trefelova / ATcode. All rights reserved.
+ * Author: Alina Trefelova / ATcode
+ * 
+ * Главный файл стилей (main.scss).
+ * Объединяет все модули стилей и содержит глобальные переменные и базовые стили.
+ */
+
+@use 'mixins';
+@use "contacts-callout";
+@use "footer-style";
+@use "front-page";
+@use "header-style";
+@use "keyframes";
+@use "page-about";
+@use "page-contacts";
+@use "page-header";
+@use "page-projects";
+@use "project-card";
+@use "single-projects";
+
+:root {
+    --bg-professional-color: #FFF4E4;
+    --text-professional-color: #141414;
+    --accent-professional-color: #68191E;
+    --second-professional-color: #A9232B;
+    --light-professional-color: #28282A;
+
+    --border-radius-card: 1.25rem;
+    --border-radius-tag: 0.25rem;
+    --border-radius-other: 1rem;
+
+    --container-width: 76.5rem;
+    --space-between-section-desktop: 8rem;
+    --space-between-section-mobile: 6rem;
+    --transition-default: 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-professional-color);
+    background-color: var(--bg-professional-color);
+}
+
+main {
+    flex-grow: 1;
+
+    width: min(100% - 2.5rem, var(--container-width)); 
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: var(--space-between-section-desktop);
+}
+
+.site-logo {
+    .site-logo-text {
+        display: inline-flex;
+        align-items: end;
+
+        color: var(--text-professional-color);
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 4.875rem;
+        text-decoration: none;
+
+        .logo-code {
+            margin-inline-start: 0;
+            padding-block: 0 0.25rem;
+
+            color: var(--accent-professional-color);
+            font-family: "Caveat", system-ui, sans-serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            line-height: 3rem;
+        }
+    }
+}
+
+.accent {
+    color: var(--accent-professional-color);
+}
+
+.note {
+    font-family: "Caveat", system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2rem;
+    letter-spacing: 2%;
+}
+
+.hero-tag {
+    position: absolute;
+    z-index: 3;
+
+    padding: 0.125rem 0.1875rem;
+
+    color: #e3e3e3;
+    font-family: "JetBrains Mono", system-ui, monospace;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+
+    background-color: var(--light-professional-color);
+    border-radius: 0.25rem;
+    opacity: 0;
+
+    cursor: default;
+    transform-origin: center center;
+    will-change: transform;
+
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: 
+        heroElementFade 0.5s ease forwards, 
+        tagFloat 5s ease-in-out infinite 0.6s;
+
+    &:hover {
+        animation-play-state: paused;
+        filter: invert(1);
+    }
+}
+
+
+* {
+    scrollbar-color: var(--accent-professional-color) var(--text-professional-color);
+    scrollbar-width: thin;
+}
+
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--text-professional-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--accent-professional-color);
+    border-radius: 4px;
+    border: 2px solid var(--text-professional-color);
+
+    &:hover {
+        background-color: var(--second-professional-color);
+    }
+}
+
+
+*::-webkit-scrollbar-corner {
+    background: var(--text-professional-color);
+}
+
+
+@media (max-width: 64.5rem) {
+    section {
+        margin-bottom: var(--space-between-section-mobile);
+    }
+
+    .note {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        letter-spacing: 2%;
+    }
+}

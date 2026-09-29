@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "portfolio/challenge-solution",
+  "version": "1.0.0",
+  "title": "Challenge & Solution (Проблема / Решение)",
+  "category": "widgets",
+  "icon": "randomize",
+  "description": "Инженерный разбор задач, багов или этапов проекта в 2 или 3 шага",
+  "attributes": {
+    "theme": {
+      "type": "string",
+      "default": "light"
+    },
+    "mode": {
+      "type": "string",
+      "default": "3-steps"
+    },
+    "step1Badge": {
+      "type": "string",
+      "default": "01_challenge"
+    },
+    "step1Title": {
+      "type": "string",
+      "default": "В чем была проблема"
+    },
+    "step1Text": {
+      "type": "string",
+      "default": "Узкое место в производительности, неоптимальные ререндеры или сложная бизнес-логика."
+    },
+    "step2Badge": {
+      "type": "string",
+      "default": "02_solution"
+    },
+    "step2Title": {
+      "type": "string",
+      "default": "Как я это решила"
+    },
+    "step2Text": {
+      "type": "string",
+      "default": "Разработка кастомного хука, изоляция состояния и переход на мемоизированные селекторы."
+    },
+    "step3Badge": {
+      "type": "string",
+      "default": "03_impact"
+    },
+    "step3Title": {
+      "type": "string",
+      "default": "Результат"
+    },
+    "step3Text": {
+      "type": "string",
+      "default": "Прирост скорости отрисовки на 60% и чистая масштабируемая архитектура модуля."
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": [
+    "file:./index.css",
+    "file:./style-index.css"
+  ]
+}
