@@ -204,7 +204,7 @@
 			}
 		}
 
-		.contacts-ad-card {
+		.contacts-banner-card {
 			@include svg-background("ad-border-fill.svg", -8px, 64.5rem);
 
 			display: flex;
@@ -218,7 +218,7 @@
 
 			opacity: 0;
 
-			.ad-line-numbers {
+			.promo-line-numbers {
 				position: relative;
 
 				display: flex;
@@ -253,11 +253,11 @@
 				}
 			}
 
-			.ad-content {
+			.promo-content {
 				display: flex;
 				flex-direction: column;
 
-				.ad-line {
+				.promo-line {
 					color: var(--bg-professional-color);
 					font-family: 'JetBrains Mono', monospace;
 					font-size: 0.875rem;
@@ -265,7 +265,7 @@
 					height: 1.25rem;
 					white-space: nowrap;
 
-					a.ad-link {
+					a.promo-link {
 						color: var(--bg-professional-color);
 						text-decoration: none;
 						transition: opacity 0.2s ease;
@@ -531,7 +531,7 @@
                 }
             }
 
-            .contacts-ad-card {
+            .contacts-banner-card {
                 order: 3; 
                 width: 100%;
                 border-radius: 0;
@@ -671,8 +671,8 @@
                 }
             }
 
-            .contacts-ad-card {
-                .ad-line-numbers {
+            .contacts-banner-card {
+                .promo-line-numbers {
                     display: none;
                 }
             }

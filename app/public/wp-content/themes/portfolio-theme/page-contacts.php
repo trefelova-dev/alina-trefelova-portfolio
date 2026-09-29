@@ -144,7 +144,7 @@ $link_for_alyona = get_field( 'link_for_alyona' );
 
 		<?php if ( $ad_for_alyona ) : 
 			$link_url  = ! empty( $link_for_alyona ) ? esc_url( $link_for_alyona ) : '#';
-			$link_html = '<a href="' . $link_url . '" target="_blank" rel="noopener noreferrer" class="ad-link">&nbsp;[&nbsp;link&nbsp;]</a>';
+			$link_html = '<a href="' . $link_url . '" target="_blank" rel="noopener noreferrer" class="promo-link">&nbsp;[&nbsp;link&nbsp;]</a>';
 
 			$clean_text = strip_tags( $ad_for_alyona );
 			$lines = array_values( array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", "", $clean_text ) ) ) ) );
@@ -158,14 +158,14 @@ $link_for_alyona = get_field( 'link_for_alyona' );
 				$line_2 = esc_html( $line_2 ) . ' ' . $link_html;
 			}
 		?>
-			<div class="contacts-ad-card">
-				<div class="ad-line-numbers" aria-hidden="true">
+			<div class="contacts-banner-card">
+				<div class="promo-line-numbers" aria-hidden="true">
 					<span>01</span>
 					<span>02</span>
 				</div>
-				<div class="ad-content">
-					<div class="ad-line"><?php echo esc_html( $line_1 ); ?></div>
-					<div class="ad-line"><?php echo $line_2; ?></div>
+				<div class="promo-content">
+					<div class="promo-line"><?php echo esc_html( $line_1 ); ?></div>
+					<div class="promo-line"><?php echo $line_2; ?></div>
 				</div>
 			</div>
 		<?php endif; ?>

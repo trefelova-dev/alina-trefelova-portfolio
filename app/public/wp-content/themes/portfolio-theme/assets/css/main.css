@@ -2517,11 +2517,11 @@
 .page-contacts-container .contacts-list-section .contacts-items-wrapper.is-animated .contacts-list-item .contacts-tg-note span.note {
   animation: cardPopIn 0.4s ease forwards 1.7s;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card {
+.page-contacts-container .contacts-list-section .contacts-banner-card {
   position: relative;
   z-index: 1;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card::before {
+.page-contacts-container .contacts-list-section .contacts-banner-card::before {
   content: "";
   position: absolute;
   inset: -8px;
@@ -2533,7 +2533,7 @@
   background-size: 100% 100%;
 }
 @media (max-width: 64.5rem) {
-  .page-contacts-container .contacts-list-section .contacts-ad-card::before {
+  .page-contacts-container .contacts-list-section .contacts-banner-card::before {
     top: -0.5rem;
     bottom: -0.5rem;
     left: 50%;
@@ -2542,7 +2542,7 @@
     transform: translateX(-50%);
   }
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card {
+.page-contacts-container .contacts-list-section .contacts-banner-card {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -2552,7 +2552,7 @@
   box-sizing: border-box;
   opacity: 0;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card .ad-line-numbers {
+.page-contacts-container .contacts-list-section .contacts-banner-card .promo-line-numbers {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2562,7 +2562,7 @@
      -moz-user-select: none;
           user-select: none;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card .ad-line-numbers span {
+.page-contacts-container .contacts-list-section .contacts-banner-card .promo-line-numbers span {
   color: var(--bg-professional-color);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.875rem;
@@ -2570,7 +2570,7 @@
   height: 1.25rem;
   text-align: right;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card .ad-line-numbers::after {
+.page-contacts-container .contacts-list-section .contacts-banner-card .promo-line-numbers::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -2580,11 +2580,11 @@
   content: "";
   opacity: 0.4;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card .ad-content {
+.page-contacts-container .contacts-list-section .contacts-banner-card .promo-content {
   display: flex;
   flex-direction: column;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card .ad-content .ad-line {
+.page-contacts-container .contacts-list-section .contacts-banner-card .promo-content .promo-line {
   color: var(--bg-professional-color);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.875rem;
@@ -2592,15 +2592,15 @@
   height: 1.25rem;
   white-space: nowrap;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card .ad-content .ad-line a.ad-link {
+.page-contacts-container .contacts-list-section .contacts-banner-card .promo-content .promo-line a.promo-link {
   color: var(--bg-professional-color);
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card .ad-content .ad-line a.ad-link:hover {
+.page-contacts-container .contacts-list-section .contacts-banner-card .promo-content .promo-line a.promo-link:hover {
   opacity: 0.8;
 }
-.page-contacts-container .contacts-list-section .contacts-ad-card.is-animated {
+.page-contacts-container .contacts-list-section .contacts-banner-card.is-animated {
   animation: cardPopIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
 }
 .page-contacts-container .contacts-form .form-editor-ui {
@@ -2810,12 +2810,12 @@
   .page-contacts-container .contacts-list-section .contacts-items-wrapper .contacts-list-item .contacts-tg-note span.note {
     right: -70%;
   }
-  .page-contacts-container .contacts-list-section .contacts-ad-card {
+  .page-contacts-container .contacts-list-section .contacts-banner-card {
     order: 3;
     width: 100%;
     border-radius: 0;
   }
-  .page-contacts-container .contacts-list-section .contacts-ad-card::before {
+  .page-contacts-container .contacts-list-section .contacts-banner-card::before {
     top: -0.5rem;
     bottom: -0.5rem;
     left: 50%;
@@ -2884,7 +2884,7 @@
   .page-contacts-container .contacts-list-section .contacts-items-wrapper .contacts-list-item .contacts-tg-note span.note {
     right: -30%;
   }
-  .page-contacts-container .contacts-list-section .contacts-ad-card .ad-line-numbers {
+  .page-contacts-container .contacts-list-section .contacts-banner-card .promo-line-numbers {
     display: none;
   }
   .page-contacts-container .contacts-form .form-editor-ui .line-numbers {
