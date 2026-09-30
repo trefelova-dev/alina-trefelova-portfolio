@@ -1,0 +1,41 @@
+name: Deploy to Production VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            THEME_DIR="/var/www/trefelova-admin/data/www/at-code.ru/wp-content/themes/portfolio-theme"
+            SITE_DIR="/var/www/trefelova-admin/data/www/at-code.ru"
+            PLUGINS_DIR="$SITE_DIR/wp-content/plugins"
+
+            cd "$THEME_DIR"
+            git clone git@github.com:trefelova-dev/alina-trefelova-portfolio.git temp_deploy
+
+            cp -r temp_deploy/app/public/wp-content/themes/portfolio-theme/* .
+
+            if [ -d "temp_deploy/app/public/wp-content/plugins/portfolio-blocks" ]; then
+              cp -r temp_deploy/app/public/wp-content/plugins/portfolio-blocks/* "$PLUGINS_DIR/portfolio-blocks/"
+            fi
+
+            rm -rf temp_deploy
+
+            chown -R trefelova-admin:trefelova-admin "$SITE_DIR/wp-content"
+            cd "$SITE_DIR" && wp cache flush --allow-root
+
+            echo "Deployment successful!"
