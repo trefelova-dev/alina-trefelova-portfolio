@@ -164,6 +164,9 @@ section {
     background: var(--text-professional-color);
 }
 
+* {
+    -webkit-tap-highlight-color: transparent;
+}
 
 @media (max-width: 64.5rem) {
     section {

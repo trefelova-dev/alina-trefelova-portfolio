@@ -216,7 +216,7 @@ function init_scroll_animations() {
     const selectors = [
         '.skills-section', '.about-section', '.featured-projects-section', 
         '.contacts-callout', '.projects-grid', '.contacts-items-wrapper', 
-        '.contacts-ad-card', '.contacts-form', '.about-academic-section', 
+        '.contacts-banner-card', '.contacts-form', '.about-academic-section', 
         '.about-toolbox-section', '.about-signature', '.stack-editor-ui', 
         '.project-nav-container', 
         '.project-content-body > *'

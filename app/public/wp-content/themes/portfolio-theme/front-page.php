@@ -40,7 +40,7 @@ $projects_url     = $projects_page_id ? get_permalink( $projects_page_id ) : hom
 		
 		<div class="hero-photo-wrapper">
 			<?php if ( $home_main_photo ) : ?>
-				<img src="<?php echo esc_url( $home_main_photo ); ?>" alt="Алина Трефелова" class="hero-main-img">
+				<img src="<?php echo esc_url( $home_main_photo ); ?>" alt="Алина Трефелова" class="hero-main-img" fetchpriority="high">
 			<?php endif; ?>
 
 			<span class="hero-tag tag-loc">[loc: world_wide]</span>

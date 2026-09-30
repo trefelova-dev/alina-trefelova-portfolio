@@ -4478,7 +4478,16 @@ main.project-content-body {
   }
   .project-hero .project-hero-container .project-meta-badges .hero-tag {
     position: static;
-    animation: heroElementFade 0.5s ease forwards;
+    animation: heroElementFade 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .project-hero .project-hero-container .project-meta-badges .tag-role {
+    animation-delay: 0.8s;
+  }
+  .project-hero .project-hero-container .project-meta-badges .tag-year {
+    animation-delay: 1.05s;
+  }
+  .project-hero .project-hero-container .project-meta-badges .tag-type {
+    animation-delay: 1.3s;
   }
   .project-navigation-section .project-nav-container .next-project-card-wrapper .next-project-card .next-project-content {
     max-width: 50%;
@@ -4701,6 +4710,10 @@ section {
 
 *::-webkit-scrollbar-corner {
   background: var(--text-professional-color);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (max-width: 64.5rem) {

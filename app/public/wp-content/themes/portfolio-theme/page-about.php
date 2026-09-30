@@ -79,7 +79,7 @@ $tech_ai       = ! empty( $about_technologies['home_technologies_ai'] ) ? $about
                         </div>
                     <?php endif; ?>
 
-                    <img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $photo_alt ); ?>" class="about-main-img">
+                    <img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $photo_alt ); ?>" class="about-main-img" fetchpriority="high">
                 </div>
             <?php endif; ?>
         </div>
