@@ -1,5 +1,6 @@
 <?php
 add_theme_support('post-thumbnails');
+add_theme_support( 'title-tag' );
 
 function theme_register_menus() {
     register_nav_menus([
@@ -79,5 +80,26 @@ function inject_svg_into_menu($items, $args) {
     }
     return $items;
 }
+
+add_filter( 'pll_copy_post_metas', function( $metas, $sync, $from, $to ) {
+    $excluded_fields = [
+        'short_description',
+        'project_add',
+    ];
+
+    foreach ( $excluded_fields as $field ) {
+        $key = array_search( $field, $metas, true );
+        if ( false !== $key ) {
+            unset( $metas[ $key ] );
+        }
+
+        $acf_ref = array_search( '_' . $field, $metas, true );
+        if ( false !== $acf_ref ) {
+            unset( $metas[ $acf_ref ] );
+        }
+    }
+
+    return $metas;
+}, 10, 4 );
 
 ?>
