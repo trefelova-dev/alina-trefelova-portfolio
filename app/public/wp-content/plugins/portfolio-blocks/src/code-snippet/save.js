@@ -38,7 +38,7 @@ export default function Save({ attributes }) {
           <pre className="code-pre-block">
             <code
               className={`language-${language}`}
-              dangerouslySetInnerHTML={{ __html: highlightCode(code) }}
+              dangerouslySetInnerHTML={{ __html: highlightCode(code, language) }}
             />
           </pre>
         </div>
