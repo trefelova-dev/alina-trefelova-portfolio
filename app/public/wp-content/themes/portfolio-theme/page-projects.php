@@ -178,12 +178,12 @@ $current_category       = get_field('target_project_category');
 				'data_tech_attr'    => $data_tech_attr,
 				'type_attr'         => $type_attr,
 				'card_bg'           => get_field('project_card_bg'),
-				'short_description' => get_field('short_description'),
+				'short_description' => get_the_excerpt(),
 				'gallery_images'    => $gallery_images,
 				'project_add'       => get_field('project_add'),
 				'tech_names'        => $tech_names,
 			));
-
+			
 		endwhile;
 		wp_reset_postdata();
 		?>
