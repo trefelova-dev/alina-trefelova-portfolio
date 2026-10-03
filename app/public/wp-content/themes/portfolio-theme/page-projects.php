@@ -18,33 +18,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; 
 }
 
-$is_tech_archive = is_tax('project_technology');
-$current_term    = $is_tech_archive ? get_queried_object() : null;
-
-if ($is_tech_archive && $current_term) {
-	$projects_title       = $current_term->name;
-	$projects_description = !empty($current_term->description) ? trim(strip_tags($current_term->description)) : '';
-	$current_category     = 'taxonomy';
-
-	$tech_icon            = get_field('project_technology_icon', 'term_' . $current_term->term_id);
-
-	$arrow_note             = '';
-	$empty_page_title       = function_exists('pll__') ? pll__('Проектов пока нет') : 'Проектов пока нет';
-	$empty_page_description = '';
-} else {
-	$projects_title         = get_field('projects_title');
-	$projects_description   = get_field('projects_description');
-	$placeholder_for_search = get_field('placeholder_for_search');
-	$or_for_search          = get_field('or_for_search');
-	$filter_all             = get_field('filter_all');
-	$arrow_note             = get_field('arrow_note');
-	$empty_page_title       = get_field('empty_page_title');
-	$empty_page_description = get_field('empty_page_description');
-	$empty_page_picture     = get_field('empty_page_picture');
-	$empty_page_contacts    = get_field('empty_page_contacts');
-	$current_category       = get_field('target_project_category');
-	$tech_icon              = null;
-}
+$projects_title         = get_field('projects_title');
+$projects_description   = get_field('projects_description');
+$placeholder_for_search = get_field('placeholder_for_search');
+$or_for_search          = get_field('or_for_search');
+$filter_all             = get_field('filter_all');
+$arrow_note             = get_field('arrow_note');
+$empty_page_title       = get_field('empty_page_title');
+$empty_page_description = get_field('empty_page_description');
+$empty_page_picture     = get_field('empty_page_picture');
+$empty_page_contacts    = get_field('empty_page_contacts');
+$current_category       = get_field('target_project_category');
 ?>
 
 <section class="page-hero has-wavy-bottom">
@@ -74,92 +58,62 @@ if ($is_tech_archive && $current_term) {
 		</div>
 
 		<div class="page-hero-controls">
-
-			<?php if ($is_tech_archive) : ?>
-				<?php if (!empty($tech_icon)) : ?>
-					<div class="hero-tech-icon">
-						<?php echo $tech_icon; ?>
-					</div>
-				<?php endif; ?>
-
-			<?php else : ?>
-				<form role="search" method="get" class="hero-search-form" action="<?php echo esc_url(home_url('/')); ?>">
-					<div class="hero-search-wrapper">
-						<input 
-							type="search" 
-							class="hero-search-input" 
-							placeholder="<?php echo esc_attr($placeholder_for_search); ?>" 
-							value="" 
-							name="s" 
-						/>
-						<button type="submit" class="hero-search-submit" aria-label="Поиск">
-							<?php get_svg_icon('magnifier'); ?>
-						</button>
-					</div>
-				</form>
-
-				<?php if ($or_for_search) : ?>
-					<span class="note search-note"><?php echo esc_html($or_for_search); ?></span>
-				<?php endif; ?>
-
-				<div class="hero-filters">
-					<button class="filter-btn active" data-filter="all">
-						[ <?php echo esc_html($filter_all ?: 'все'); ?> ]
+			<form role="search" method="get" class="hero-search-form" action="<?php echo esc_url(home_url('/')); ?>">
+				<div class="hero-search-wrapper">
+					<input 
+						type="search" 
+						class="hero-search-input" 
+						placeholder="<?php echo esc_attr($placeholder_for_search); ?>" 
+						value="" 
+						name="s" 
+					/>
+					<button type="submit" class="hero-search-submit" aria-label="Поиск">
+						<?php get_svg_icon('magnifier'); ?>
 					</button>
-
-					<?php if ($current_category === 'work') : ?>
-						<button class="filter-btn" data-filter="react">[ react ]</button>
-						<button class="filter-btn" data-filter="wordpress">[ wordpress ]</button>
-						<button class="filter-btn" data-filter="python">[ python ]</button>
-
-					<?php elseif ($current_category === 'playground') : ?>
-						<button class="filter-btn" data-filter="game">[ games ]</button>
-						<button class="filter-btn" data-filter="creative">[ creative ]</button>
-					<?php endif; ?>
 				</div>
+			</form>
+
+			<?php if ($or_for_search) : ?>
+				<span class="note search-note"><?php echo esc_html($or_for_search); ?></span>
 			<?php endif; ?>
 
+			<div class="hero-filters">
+				<button class="filter-btn active" data-filter="all">
+					[ <?php echo esc_html($filter_all ?: 'все'); ?> ]
+				</button>
+
+				<?php if ($current_category === 'work') : ?>
+					<button class="filter-btn" data-filter="react">[ react ]</button>
+					<button class="filter-btn" data-filter="wordpress">[ wordpress ]</button>
+					<button class="filter-btn" data-filter="python">[ python ]</button>
+
+				<?php elseif ($current_category === 'playground') : ?>
+					<button class="filter-btn" data-filter="game">[ games ]</button>
+					<button class="filter-btn" data-filter="creative">[ creative ]</button>
+				<?php endif; ?>
+			</div>
 		</div>
 
 	</div>
 </section>
 
 <section class="projects-grid">
-
 	<?php
-	if ($is_tech_archive && $current_term) {
-		$args = array(
-			'post_type'      => 'projects',
-			'posts_per_page' => -1,
-			'post_status'    => 'publish',
-			'meta_key'       => 'project_date',
-			'orderby'        => 'meta_value',
-			'order'          => 'DESC',
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'project_technology',
-					'field'    => 'term_id',
-					'terms'    => $current_term->term_id,
-				)
+	$args = array(
+		'post_type'      => 'projects',
+		'posts_per_page' => -1,
+		'post_status'    => 'publish',
+		'meta_key'       => 'project_date',
+		'orderby'        => 'meta_value',
+		'order'          => 'DESC',
+		'meta_query'     => array(
+			array(
+				'key'     => 'project_category',
+				'value'   => $current_category,
+				'compare' => '='
 			)
-		);
-	} else {
-		$args = array(
-			'post_type'      => 'projects',
-			'posts_per_page' => -1,
-			'post_status'    => 'publish',
-			'meta_key'       => 'project_date',
-			'orderby'        => 'meta_value',
-			'order'          => 'DESC',
-			'meta_query'     => array(
-				array(
-					'key'     => 'project_category',
-					'value'   => $current_category,
-					'compare' => '='
-				)
-			)
-		);
-	}
+		)
+	);
 
 	$projects_query = new WP_Query($args);
 
