@@ -3663,8 +3663,8 @@
   pointer-events: none;
 }
 .project-card .project-card-link .project-card-media .project-card-add.is-diploma {
-  right: 0;
-  bottom: -52%;
+  right: 4%;
+  bottom: -36%;
 }
 .project-card .project-card-link .project-card-media .project-card-add.is-diploma .diploma-badge-wrapper {
   position: relative;
@@ -3686,7 +3686,7 @@
 }
 .project-card .project-card-link .project-card-media .project-card-add.is-text {
   right: 1rem;
-  bottom: -40%;
+  bottom: -32%;
 }
 .project-card .project-card-link .project-card-media .project-card-add.is-text .badge-custom-text {
   display: inline-block;
@@ -4051,12 +4051,48 @@ main.project-content-body {
 
 .project-stack-section {
   background-color: var(--bg-professional-color);
+  position: relative;
 }
 .project-stack-section .project-stack-container {
   max-width: var(--container-width);
+  position: relative;
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 4vw, 6.75rem);
   box-sizing: border-box;
+}
+.project-stack-section .project-stack-container .project-stack-note {
+  position: absolute;
+  top: -3.5rem;
+  right: clamp(2rem, 8vw, 7rem);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  pointer-events: none;
+  z-index: 10;
+}
+.project-stack-section .project-stack-container .project-stack-note .stack-note-text {
+  color: var(--accent-professional-color, #68191E);
+  font-family: "Caveat", cursive;
+  font-size: clamp(1.5rem, 1.8vw, 2rem);
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+}
+.project-stack-section .project-stack-container .project-stack-note .stack-arrow-svg {
+  flex-shrink: 0;
+  transform: rotate(0deg) scale(0.7);
+}
+.project-stack-section .project-stack-container .project-stack-note .stack-arrow-svg path {
+  stroke: var(--accent-professional-color, #68191E);
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+}
+.project-stack-section .project-stack-container .project-stack-note.is-animated .stack-arrow-svg path {
+  animation: drawStroke 0.8s cubic-bezier(0.45, 0, 0.15, 1) forwards 0.2s;
+}
+.project-stack-section .project-stack-container .project-stack-note.is-animated .stack-note-text {
+  --translateY: -1rem;
+  animation: textFadeIn 0.5s ease forwards 0.5s;
 }
 .project-stack-section .project-stack-container .stack-editor-ui {
   position: relative;
@@ -4085,8 +4121,7 @@ main.project-content-body {
 }
 .project-stack-section .project-stack-container .stack-editor-ui {
   display: flex;
-  align-items: flex-start;
-  gap: 2rem;
+  flex-direction: column;
   padding: clamp(1.5rem, 3vw, 2.5rem);
   box-sizing: border-box;
   opacity: 0;
@@ -4094,14 +4129,38 @@ main.project-content-body {
 .project-stack-section .project-stack-container .stack-editor-ui.is-animated {
   animation: cardPopIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
 }
+.project-stack-section .project-stack-container .stack-editor-ui .stack-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 244, 228, 0.12);
+}
+.project-stack-section .project-stack-container .stack-editor-ui .stack-editor-header .stack-editor-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.project-stack-section .project-stack-container .stack-editor-ui .stack-editor-header .stack-editor-meta .geek-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8125rem;
+  color: var(--bg-professional-color);
+  opacity: 0.9;
+}
+.project-stack-section .project-stack-container .stack-editor-ui .stack-editor-header .stack-editor-meta .stack-editor-lang {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--bg-professional-color);
+  opacity: 0.5;
+}
 .project-stack-section .project-stack-container .stack-editor-ui .btn-copy-config {
-  position: absolute;
-  top: clamp(1.25rem, 2.5vw, 2rem);
-  right: clamp(1.5rem, 3vw, 2.5rem);
-  z-index: 5;
+  position: static;
   display: inline-flex;
   align-items: center;
-  padding: 0.125rem 0.375rem;
+  padding: 0.125rem 0.5rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.8125rem;
   line-height: 1.25;
@@ -4110,7 +4169,7 @@ main.project-content-body {
   border: none;
   border-radius: var(--border-radius-tag);
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: opacity 0.2s ease, filter 0.2s ease, transform 0.1s ease;
 }
 .project-stack-section .project-stack-container .stack-editor-ui .btn-copy-config:hover {
@@ -4124,6 +4183,12 @@ main.project-content-body {
   opacity: 1;
   filter: none;
   background-color: var(--accent-professional-color, #68191E);
+}
+.project-stack-section .project-stack-container .stack-editor-ui .stack-editor-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
 }
 .project-stack-section .project-stack-container .stack-editor-ui .line-numbers.stack-line-numbers {
   display: flex;
@@ -4156,6 +4221,7 @@ main.project-content-body {
 }
 .project-stack-section .project-stack-container .stack-editor-ui .stack-content {
   flex-grow: 1;
+  overflow-x: auto;
 }
 .project-stack-section .project-stack-container .stack-editor-ui .stack-content .json-code {
   font-family: "JetBrains Mono", monospace;
@@ -4489,6 +4555,16 @@ main.project-content-body {
   .project-hero .project-hero-container .project-meta-badges .tag-type {
     animation-delay: 1.3s;
   }
+  .project-stack-section .project-stack-container .project-stack-note {
+    top: -4rem;
+    right: 3rem;
+  }
+  .project-stack-section .project-stack-container .project-stack-note .stack-note-text {
+    font-size: 1.5rem;
+  }
+  .project-stack-section .project-stack-container .project-stack-note .stack-arrow-svg {
+    transform: scale(0.6);
+  }
   .project-navigation-section .project-nav-container .next-project-card-wrapper .next-project-card .next-project-content {
     max-width: 50%;
   }
@@ -4528,12 +4604,14 @@ main.project-content-body {
     gap: 0.5rem;
     margin-bottom: 0rem;
   }
+  .project-stack-section .project-stack-container .project-stack-note {
+    display: none;
+  }
   .project-stack-section .project-stack-container .stack-editor-ui {
     padding: 1.5rem 1rem;
-    gap: 1rem;
   }
-  .project-stack-section .project-stack-container .stack-editor-ui .btn-copy-config {
-    display: none;
+  .project-stack-section .project-stack-container .stack-editor-ui .stack-editor-body {
+    gap: 0.75rem;
   }
   .project-stack-section .project-stack-container .stack-editor-ui .json-code .code-line.indent-1 {
     padding-left: 0.75rem;

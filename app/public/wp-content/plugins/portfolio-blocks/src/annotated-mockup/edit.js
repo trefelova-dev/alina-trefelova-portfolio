@@ -1,4 +1,5 @@
 import { useBlockProps, RichText, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
   const { imgPrimary, imgSecondary, noteTop, noteBottom } = attributes;
@@ -26,16 +27,38 @@ export default function Edit({ attributes, setAttributes }) {
               value={imgPrimary}
               render={({ open }) =>
                 imgPrimary ? (
-                  <img
-                    src={imgPrimary}
-                    alt="Primary preview"
-                    className="annotated-img"
-                    onClick={open}
-                  />
-                ) : (
-                  <div className="annotated-img-placeholder" onClick={open}>
-                    <span className="font-mono text-xs text-dark/60">+ Картинка 1 (основа)</span>
+                  <div className="relative group/media">
+                    <img
+                      src={imgPrimary}
+                      alt="Primary preview"
+                      className="annotated-img"
+                    />
+                    <div className="absolute top-2 right-2 flex gap-1 z-10">
+                      <Button
+                        variant="secondary"
+                        size="compact"
+                        onClick={open}
+                        className="!bg-white/90 !text-black shadow-sm"
+                      >
+                        Заменить
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        size="compact"
+                        onClick={() => setAttributes({ imgPrimary: '' })}
+                        className="shadow-sm"
+                      >
+                        ✕
+                      </Button>
+                    </div>
                   </div>
+                ) : (
+                  <Button
+                    onClick={open}
+                    className="annotated-img-placeholder w-full text-center flex items-center justify-center cursor-pointer border border-dashed p-4"
+                  >
+                    <span className="font-mono text-xs text-dark/60">+ Картинка 1 (основа)</span>
+                  </Button>
                 )
               }
             />
@@ -50,16 +73,38 @@ export default function Edit({ attributes, setAttributes }) {
               value={imgSecondary}
               render={({ open }) =>
                 imgSecondary ? (
-                  <img
-                    src={imgSecondary}
-                    alt="Secondary preview"
-                    className="annotated-img"
-                    onClick={open}
-                  />
-                ) : (
-                  <div className="annotated-img-placeholder" onClick={open}>
-                    <span className="font-mono text-xs text-dark/60">+ Картинка 2 (нахлест)</span>
+                  <div className="relative group/media">
+                    <img
+                      src={imgSecondary}
+                      alt="Secondary preview"
+                      className="annotated-img"
+                    />
+                    <div className="absolute top-2 right-2 flex gap-1 z-10">
+                      <Button
+                        variant="secondary"
+                        size="compact"
+                        onClick={open}
+                        className="!bg-white/90 !text-black shadow-sm"
+                      >
+                        Заменить
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        size="compact"
+                        onClick={() => setAttributes({ imgSecondary: '' })}
+                        className="shadow-sm"
+                      >
+                        ✕
+                      </Button>
+                    </div>
                   </div>
+                ) : (
+                  <Button
+                    onClick={open}
+                    className="annotated-img-placeholder w-full text-center flex items-center justify-center cursor-pointer border border-dashed p-4"
+                  >
+                    <span className="font-mono text-xs text-dark/60">+ Картинка 2 (нахлест)</span>
+                  </Button>
                 )
               }
             />

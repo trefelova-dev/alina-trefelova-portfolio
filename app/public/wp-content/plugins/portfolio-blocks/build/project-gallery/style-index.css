@@ -1,3 +1,6 @@
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/project-gallery/style.css ***!
+  \***********************************************************************************************************************************************************************************/
 .project-gallery-block {
   position: relative;
   width: 100%;
@@ -5,34 +8,34 @@
 }
 
 .gallery-layout-masonry {
-  -moz-column-count: 1;
-       column-count: 1;
-  -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
   width: 100%;
+  align-items: flex-start;
 }
 
-@media (min-width: 40rem) {
+.gallery-masonry-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 40rem) {
   .gallery-layout-masonry {
-    -moz-column-count: 2;
-         column-count: 2;
+    flex-direction: column;
   }
 }
 
-@media (min-width: 64rem) {
-  .gallery-layout-masonry {
-    -moz-column-count: 3;
-         column-count: 3;
+@media (min-width: 40.0625rem) and (max-width: 63.9375rem) {
+  .gallery-masonry-col:nth-child(3) {
+    display: none;
   }
 }
 
 .gallery-masonry-item {
-  display: inline-block;
   width: 100%;
-  margin-bottom: 1.5rem;
-  -moz-column-break-inside: avoid;
-       break-inside: avoid;
-  -webkit-column-break-inside: avoid;
 }
 
 .gallery-masonry-item img {
@@ -40,7 +43,6 @@
   width: 100%;
   height: auto;
   border-radius: var(--border-radius-card, 1.25rem);
-  box-shadow: none;
 }
 
 .gallery-slider-wrapper {
@@ -284,3 +286,5 @@
 .gallery-lightbox-close:hover {
   opacity: 1;
 }
+
+/*# sourceMappingURL=style-index.css.map*/

@@ -1,3 +1,6 @@
+/*!**********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/tailwind.css ***!
+  \**********************************************************************************************************************************************************************/
 *, ::before, ::after {
     --tw-border-spacing-x: 0;
     --tw-border-spacing-y: 0;
@@ -141,6 +144,15 @@
 .inset-0 {
     inset: 0px
 }
+.right-2 {
+    right: 0.5rem
+}
+.top-2 {
+    top: 0.5rem
+}
+.z-10 {
+    z-index: 10
+}
 .my-12 {
     margin-top: 3rem;
     margin-bottom: 3rem
@@ -245,6 +257,9 @@
 .justify-between {
     justify-content: space-between
 }
+.gap-1 {
+    gap: 0.25rem
+}
 .gap-2 {
     gap: 0.5rem
 }
@@ -288,6 +303,9 @@
 }
 .border-none {
     border-style: none
+}
+.\!bg-white\/90 {
+    background-color: rgb(255 255 255 / 0.9) !important
 }
 .bg-black\/40 {
     background-color: rgb(0 0 0 / 0.4)
@@ -405,6 +423,10 @@
 .tracking-tight {
     letter-spacing: -0.025em
 }
+.\!text-black {
+    --tw-text-opacity: 1 !important;
+    color: rgb(0 0 0 / var(--tw-text-opacity, 1)) !important
+}
 .text-\[\#e3e3e3\] {
     --tw-text-opacity: 1;
     color: rgb(227 227 227 / var(--tw-text-opacity, 1))
@@ -428,6 +450,11 @@
 .opacity-60 {
     opacity: 0.6
 }
+.shadow-sm {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
 .outline-none {
     outline: 2px solid transparent;
     outline-offset: 2px
@@ -448,13 +475,16 @@
 .duration-200 {
     transition-duration: 200ms
 }
+
 .hover\:invert:hover {
     --tw-invert: invert(100%);
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
+
 .group:hover .group-hover\:opacity-100 {
     opacity: 1
 }
+
 @media (min-width: 768px) {
     .md\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr))
@@ -505,6 +535,7 @@
         line-height: 1.75rem
     }
 }
+
 @media (min-width: 1024px) {
     .lg\:grid-cols-\[1fr_auto_1fr_auto_1fr\] {
         grid-template-columns: 1fr auto 1fr auto 1fr
@@ -517,3 +548,5 @@
         line-height: 1
     }
 }
+
+/*# sourceMappingURL=index.css.map*/

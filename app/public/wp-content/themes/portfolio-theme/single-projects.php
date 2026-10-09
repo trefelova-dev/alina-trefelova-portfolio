@@ -28,6 +28,7 @@ if ( ! $settings_id ) {
 
 $global_all_projects = get_field( 'global_all_projects', $settings_id ) ?: 'Все проекты';
 $project_github_note = get_field( 'project_github_note', $settings_id ) ?: 'Read the source code here';
+$project_stack_note = get_field( 'project_stack_note', $settings_id ) ?: 'Built with this';
 ?>
 
 <?php if ( have_posts() ) : ?>
@@ -179,61 +180,79 @@ $project_github_note = get_field( 'project_github_note', $settings_id ) ?: 'Read
 			<?php if ( ! empty( $grouped_stack ) ) : ?>
 			<section class="project-stack-section">
 				<div class="project-stack-container">
+
+					<?php if ( $project_stack_note ) : ?>
+						<div class="project-stack-note">
+							<?php get_svg_icon( 'arrow-curly-medium', 'stack-arrow-svg' ); ?>
+							<span class="note stack-note-text"><?php echo esc_html( $project_stack_note ); ?></span>
+						</div>
+					<?php endif; ?>
+
 					<div class="stack-editor-ui">
-						<button 
-							type="button" 
-							class="btn-copy-config" 
-							data-json="<?php echo esc_attr( $json_string ); ?>"
-							aria-label="Copy stack JSON configuration"
-						>
-							<span class="copy-text">[copy_config]</span>
-						</button>
 
-						<div class="line-numbers stack-line-numbers" aria-hidden="true"></div>
+						<div class="stack-editor-header">
+							<div class="stack-editor-meta">
+								<span class="geek-badge">[package.json]</span>
+							</div>
 
-						<div class="stack-content">
-							<div class="json-code">
-								<div class="code-line"><span class="token-bracket">{</span></div>
-								<div class="code-line indent-1">
-									<span class="token-key">"stack"</span><span class="token-colon">:</span> <span class="token-bracket">{</span>
-								</div>
+							<button 
+								type="button" 
+								class="btn-copy-config" 
+								data-json="<?php echo esc_attr( $json_string ); ?>"
+								aria-label="Copy stack JSON configuration"
+							>
+								<span class="copy-text">[copy_config]</span>
+							</button>
+						</div>
 
-								<?php 
-								$categories = array_keys( $grouped_stack );
-								$total_cats = count( $categories );
-								$c_idx = 0;
+						<div class="stack-editor-body">
+							<div class="line-numbers stack-line-numbers" aria-hidden="true"></div>
 
-								foreach ( $grouped_stack as $category_slug => $tech_items ) :
-									$c_idx++;
-									$is_last_cat = ( $c_idx === $total_cats );
-									$items = array_values( $tech_items );
-									$total_items = count( $items );
-								?>
-									<div class="code-line indent-2">
-										<span class="token-key">"<?php echo esc_html( $category_slug ); ?>"</span><span class="token-colon">:</span> <span class="token-bracket">[</span>
-										<?php 
-										$i_idx = 0;
-										foreach ( $items as $item ) :
-											$i_idx++;
-											$is_last_item = ( $i_idx === $total_items );
-											$link_url     = ! is_wp_error( $item['link'] ) ? $item['link'] : '#';
-										?>
-											<?php if ( $is_last_item ) : ?>
-												<span class="json-array-end">
-													<span class="token-quote">"</span><a href="<?php echo esc_url( $link_url ); ?>" class="tech-json-link"><?php echo esc_html( $item['name'] ); ?></a><span class="token-quote">"</span>
-													<span class="token-bracket">]</span><?php if ( ! $is_last_cat ) echo '<span class="token-comma">,</span>'; ?>
-												</span>
-											<?php else : ?>
-												<span class="token-quote">"</span><a href="<?php echo esc_url( $link_url ); ?>" class="tech-json-link"><?php echo esc_html( $item['name'] ); ?></a><span class="token-quote">"</span><span class="token-comma">, </span>
-											<?php endif; ?>
-										<?php endforeach; ?>
+							<div class="stack-content">
+								<div class="json-code">
+									<div class="code-line"><span class="token-bracket">{</span></div>
+									<div class="code-line indent-1">
+										<span class="token-key">"stack"</span><span class="token-colon">:</span> <span class="token-bracket">{</span>
 									</div>
-								<?php endforeach; ?>
 
-								<div class="code-line indent-1"><span class="token-bracket">}</span></div>
-								<div class="code-line"><span class="token-bracket">}</span></div>
+									<?php 
+									$categories = array_keys( $grouped_stack );
+									$total_cats = count( $categories );
+									$c_idx = 0;
+
+									foreach ( $grouped_stack as $category_slug => $tech_items ) :
+										$c_idx++;
+										$is_last_cat = ( $c_idx === $total_cats );
+										$items = array_values( $tech_items );
+										$total_items = count( $items );
+									?>
+										<div class="code-line indent-2">
+											<span class="token-key">"<?php echo esc_html( $category_slug ); ?>"</span><span class="token-colon">:</span> <span class="token-bracket">[</span>
+											<?php 
+											$i_idx = 0;
+											foreach ( $items as $item ) :
+												$i_idx++;
+												$is_last_item = ( $i_idx === $total_items );
+												$link_url     = ! is_wp_error( $item['link'] ) ? $item['link'] : '#';
+											?>
+												<?php if ( $is_last_item ) : ?>
+													<span class="json-array-end">
+														<span class="token-quote">"</span><a href="<?php echo esc_url( $link_url ); ?>" class="tech-json-link"><?php echo esc_html( $item['name'] ); ?></a><span class="token-quote">"</span>
+														<span class="token-bracket">]</span><?php if ( ! $is_last_cat ) echo '<span class="token-comma">,</span>'; ?>
+													</span>
+												<?php else : ?>
+													<span class="token-quote">"</span><a href="<?php echo esc_url( $link_url ); ?>" class="tech-json-link"><?php echo esc_html( $item['name'] ); ?></a><span class="token-quote">"</span><span class="token-comma">, </span>
+												<?php endif; ?>
+											<?php endforeach; ?>
+										</div>
+									<?php endforeach; ?>
+
+									<div class="code-line indent-1"><span class="token-bracket">}</span></div>
+									<div class="code-line"><span class="token-bracket">}</span></div>
+								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</section>
@@ -304,8 +323,7 @@ $project_github_note = get_field( 'project_github_note', $settings_id ) ?: 'Read
 					$next_title      = get_the_title( $next_id );
 					$next_link       = get_permalink( $next_id );
 					$next_card_bg    = get_field( 'project_card_bg', $next_id ) ?: '#3a2d32';
-					$next_img_data   = get_field( 'project_preview_image_1', $next_id );
-					$next_img_url    = is_array( $next_img_data ) ? ( $next_img_data['url'] ?? '' ) : $next_img_data;
+					$next_img_url = get_the_post_thumbnail_url( $next_id, 'large' );
 
 					$next_main_techs = get_field( 'project_main_technologies', $next_id );
 					$next_tech_list  = '';

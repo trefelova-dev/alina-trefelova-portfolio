@@ -1,1 +1,87 @@
-(()=>{function e(){document.querySelectorAll("[data-feature-accordion]").forEach(e=>{const t=e.querySelectorAll(".feature-item"),a=e.querySelectorAll(".feature-preview-img");t.forEach(r=>{const i=r.querySelector(".feature-trigger"),c=r.querySelector(".feature-body"),l=r.getAttribute("data-feature-index");i.addEventListener("click",s=>{s.preventDefault();const o=r.classList.contains("is-active");if(t.forEach(e=>{e.classList.remove("is-active");const t=e.querySelector(".feature-body"),a=e.querySelector(".feature-trigger");t&&(t.style.display="none"),a&&a.setAttribute("aria-expanded","false")}),a.forEach(e=>e.classList.remove("is-active")),!o){r.classList.add("is-active"),c&&(c.style.display="block"),i.setAttribute("aria-expanded","true");const t=e.querySelector(`.feature-preview-img[data-preview-index="${l}"]`);t&&t.classList.add("is-active")}})})}),function(){let e=document.querySelector(".gallery-lightbox-overlay");if(!e){e=document.createElement("div"),e.className="gallery-lightbox-overlay",e.innerHTML='\n      <button type="button" class="gallery-lightbox-close geek-badge">[close / esc]</button>\n      <img class="gallery-lightbox-img" src="" alt="Fullscreen preview" />\n    ',document.body.appendChild(e);const t=e.querySelector(".gallery-lightbox-close"),a=e.querySelector(".gallery-lightbox-img"),r=()=>{e.classList.remove("is-active"),setTimeout(()=>{e.classList.contains("is-active")||(a.src="")},250)};t.addEventListener("click",r),e.addEventListener("click",t=>{t.target===e&&r()}),document.addEventListener("keydown",t=>{"Escape"===t.key&&e.classList.contains("is-active")&&r()})}document.querySelectorAll(".feature-preview-img, .feature-mobile-img").forEach(t=>{t.addEventListener("click",a=>{a.stopPropagation();const r=t.getAttribute("src");r&&(e.querySelector(".gallery-lightbox-img").src=r,e.classList.add("is-active"))})})}()}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",e):e()})();
+/******/ (() => { // webpackBootstrap
+/*!***************************************!*\
+  !*** ./src/feature-accordion/view.js ***!
+  \***************************************/
+function initAccordionLightbox() {
+  let overlay = document.querySelector('.gallery-lightbox-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'gallery-lightbox-overlay';
+    overlay.innerHTML = `
+      <button type="button" class="gallery-lightbox-close geek-badge">[close / esc]</button>
+      <img class="gallery-lightbox-img" src="" alt="Fullscreen preview" />
+    `;
+    document.body.appendChild(overlay);
+    const closeBtn = overlay.querySelector('.gallery-lightbox-close');
+    const imgNode = overlay.querySelector('.gallery-lightbox-img');
+    const close = () => {
+      overlay.classList.remove('is-active');
+      setTimeout(() => {
+        if (!overlay.classList.contains('is-active')) {
+          imgNode.src = '';
+        }
+      }, 250);
+    };
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-active')) {
+        close();
+      }
+    });
+  }
+  document.querySelectorAll('.feature-preview-img, .feature-mobile-img').forEach(img => {
+    img.addEventListener('click', e => {
+      e.stopPropagation();
+      const targetSrc = img.getAttribute('src');
+      if (!targetSrc) return;
+      const lightboxImg = overlay.querySelector('.gallery-lightbox-img');
+      lightboxImg.src = targetSrc;
+      overlay.classList.add('is-active');
+    });
+  });
+}
+function initFeatureAccordion() {
+  const blocks = document.querySelectorAll('[data-feature-accordion]');
+  blocks.forEach(block => {
+    const items = block.querySelectorAll('.feature-item');
+    const previews = block.querySelectorAll('.feature-preview-img');
+    items.forEach(item => {
+      const trigger = item.querySelector('.feature-trigger');
+      const body = item.querySelector('.feature-body');
+      const targetIndex = item.getAttribute('data-feature-index');
+      trigger.addEventListener('click', e => {
+        e.preventDefault();
+        const isCurrentlyActive = item.classList.contains('is-active');
+        items.forEach(otherItem => {
+          otherItem.classList.remove('is-active');
+          const otherBody = otherItem.querySelector('.feature-body');
+          const otherTrigger = otherItem.querySelector('.feature-trigger');
+          if (otherBody) otherBody.style.display = 'none';
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        });
+        previews.forEach(p => p.classList.remove('is-active'));
+        if (!isCurrentlyActive) {
+          item.classList.add('is-active');
+          if (body) body.style.display = 'block';
+          trigger.setAttribute('aria-expanded', 'true');
+          const activePreview = block.querySelector(`.feature-preview-img[data-preview-index="${targetIndex}"]`);
+          if (activePreview) {
+            activePreview.classList.add('is-active');
+          }
+        }
+      });
+    });
+  });
+  initAccordionLightbox();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initFeatureAccordion);
+} else {
+  initFeatureAccordion();
+}
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

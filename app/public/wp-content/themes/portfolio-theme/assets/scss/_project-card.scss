@@ -209,8 +209,8 @@
 				pointer-events: none;
 
 				&.is-diploma {
-					right: 0;
-					bottom: -52%;
+					right: 4%;
+					bottom: -36%;
 
 					.diploma-badge-wrapper {
 						position: relative;
@@ -237,7 +237,7 @@
 
 				&.is-text {
 					right: 1rem;
-					bottom: -40%;
+					bottom: -32%;
 
 					.badge-custom-text {
 						display: inline-block;

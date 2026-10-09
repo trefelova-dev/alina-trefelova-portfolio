@@ -1,1 +1,24 @@
-document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("[data-before-after]").forEach(e=>{const t=e.querySelector(".before-after-range-input"),r=e.querySelector(".before-after-overlay"),o=e.querySelector(".before-after-slider-line");t&&r&&o&&t.addEventListener("input",e=>{(e=>{const t=100-e;r.style.clipPath=`inset(0 ${t}% 0 0)`,o.style.left=`${e}%`})(e.target.value)})})});
+/******/ (() => { // webpackBootstrap
+/*!**********************************!*\
+  !*** ./src/before-after/view.js ***!
+  \**********************************/
+document.addEventListener('DOMContentLoaded', () => {
+  const blocks = document.querySelectorAll('[data-before-after]');
+  blocks.forEach(block => {
+    const range = block.querySelector('.before-after-range-input');
+    const overlay = block.querySelector('.before-after-overlay');
+    const line = block.querySelector('.before-after-slider-line');
+    if (!range || !overlay || !line) return;
+    const updateSlider = val => {
+      const rightInset = 100 - val;
+      overlay.style.clipPath = `inset(0 ${rightInset}% 0 0)`;
+      line.style.left = `${val}%`;
+    };
+    range.addEventListener('input', e => {
+      updateSlider(e.target.value);
+    });
+  });
+});
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

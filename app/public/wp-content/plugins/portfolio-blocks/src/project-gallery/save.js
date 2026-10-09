@@ -10,22 +10,33 @@ export default function Save({ attributes }) {
   if (!items || items.length === 0) return null;
 
   if (layout === 'masonry') {
+    const allImages = [];
+    items.forEach((item) => {
+      if (item.desktopUrl) {
+        allImages.push({ url: item.desktopUrl, alt: item.desktopAlt || '' });
+      }
+      if (item.mobileUrl) {
+        allImages.push({ url: item.mobileUrl, alt: item.mobileAlt || '' });
+      }
+    });
+
+    const columnsCount = 3;
+    const columns = Array.from({ length: columnsCount }, () => []);
+    allImages.forEach((img, index) => {
+      columns[index % columnsCount].push(img);
+    });
+
     return (
       <div {...blockProps}>
         <div className="gallery-layout-masonry">
-          {items.map((item, idx) => (
-            <React.Fragment key={idx}>
-              {item.desktopUrl && (
-                <div className="gallery-masonry-item">
-                  <img src={item.desktopUrl} alt={item.desktopAlt || ''} />
+          {columns.map((colItems, colIdx) => (
+            <div key={colIdx} className="gallery-masonry-col">
+              {colItems.map((img, imgIdx) => (
+                <div key={imgIdx} className="gallery-masonry-item">
+                  <img src={img.url} alt={img.alt} />
                 </div>
-              )}
-              {item.mobileUrl && (
-                <div className="gallery-masonry-item">
-                  <img src={item.mobileUrl} alt={item.mobileAlt || ''} />
-                </div>
-              )}
-            </React.Fragment>
+              ))}
+            </div>
           ))}
         </div>
       </div>

@@ -218,8 +218,7 @@ function init_scroll_animations() {
         '.contacts-callout', '.projects-grid', '.contacts-items-wrapper', 
         '.contacts-banner-card', '.contacts-form', '.about-academic-section', 
         '.about-toolbox-section', '.about-signature', '.stack-editor-ui', 
-        '.project-nav-container', 
-        '.project-content-body > *'
+        '.project-nav-container', '.project-content-body > *', '.project-stack-note'
     ].join(', ');
 
     document.querySelectorAll(selectors).forEach(sec => {
